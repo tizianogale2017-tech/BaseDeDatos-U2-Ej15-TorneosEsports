@@ -25,3 +25,25 @@ Modelar la gestión de una organización de esports: videojuegos oficiales, torn
 ## Resultado
 
 ![Diagrama](captura.png)
+
+---
+
+## Normalización
+
+Se normaliza el documento `Partido` con sus registros de `Estadistica`. En todas las tablas la PK va en la primera columna y las FK al final. Los datos son de ejemplo.
+
+**Forma 0.** Una sola tabla con todo junto. Hay celdas con listas: cada partido puede tener varios registros de estadistica.
+
+![Forma 0](normalizacion/00-forma-0.png)
+
+**1FN.** Cada elemento de la lista pasa a su propia fila y la clave queda compuesta: (`id_partido`, `id_jugador`).
+
+![1FN](normalizacion/01-1fn.png)
+
+**2FN.** Los datos de partido dependen solo de `id_partido` y los de jugador solo de `id_jugador`. Se separan en `Partido` y `Jugador`; `Estadistica` queda con la clave compuesta y lo que depende de ambos.
+
+![2FN](normalizacion/02-2fn.png)
+
+**3FN.** Los datos de `Torneo`, `Equipo` y `Videojuego` dependen de su propio identificador y no de la PK de partido, así que pasan a tablas aparte. En el modelo final cada tabla usa su id propio.
+
+![3FN](normalizacion/03-3fn.png)
