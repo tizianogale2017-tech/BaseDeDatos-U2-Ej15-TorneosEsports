@@ -47,3 +47,9 @@ Se normaliza el documento `Partido` con sus registros de `Estadistica`. En todas
 **3FN.** Los datos de `Torneo`, `Equipo` y `Videojuego` dependen de su propio identificador y no de la PK de partido, así que pasan a tablas aparte. En el modelo final cada tabla usa su id propio.
 
 ![3FN](normalizacion/03-3fn.png)
+
+---
+
+## SQL
+
+El script `script.sql` crea las tablas con sus claves primarias y foráneas y carga datos de ejemplo. Está probado en SQLite (con `PRAGMA foreign_keys = ON;`).
